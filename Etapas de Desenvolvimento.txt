@@ -1,0 +1,30 @@
+1) Definindo a dimensão do palco do jogo
+
+Os elementos html que representam o covid serão criados de forma aleatória em toda a dimensão da página.
+
+Para que possamos criar esses elementos de forma aleatória utilizando recursos randômicos, 
+se faz necessário estabelecer quais serão os limites das posições X (window.innerWidth - largura) e Y (window.innerHeight - altura).
+
+Se essas dimensões não forem previamente definidas, 
+corre-se o risco de o elemento ser criado fora da dimensão visível pelo usuário.
+
+Nesses casos o browser incluiria automaticamente uma barra de rolagem para que o usuário navegasse aé a posição daquele elemento. 
+
+Em um game, isso seria algo indesejado, o objetivo aqui é que esses elementos sejam criados dentro do campo de visão do jogador. 
+
+Para isso nós precisamos definir até onde nos eixos X e Y esse recurso do game atuará. 
+
+2) Criando posições randômicas
+
+A ideia é que com base nos valores de altura e largura identificados seja possível produzir de forma aleatória os elementos html 
+(no caso a imagem do covid) a serem apresentados na página. 
+
+Criar elemento randômico de forma programática.
+
+3) Criando tamanhos randômicos
+
+Produzir tamanhos variados para o "covid" que irá aparecer randomicamente na tela. 
+
+4) Criando e removendo imagens de covid a cada ciclo de tempo
+
+5) Criando o cenário do game e campo de vida
