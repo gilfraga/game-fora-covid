@@ -5,33 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Fora Covid</title>
+    <title>Vamos Vacinar!</title>
     
     <!-- CSS & JAVASCRIPT-->
     <link rel="stylesheet" href="estilo.css">
     <script src="jogo.js"></script>
 
 </head>
+
 <body onresize="ajustaTamanhoPalcoJogo()">
 
     <div class="painel">
 
         <div class="vidas">
-            <img src="imagens/coracao_vazio.png">
-            <img src="imagens/coracao_cheio.png">
-            <img src="imagens/coracao_cheio.png">
+            <img id= "v1" src="imagens/coracao_cheio.png">
+            <img id= "v2" src="imagens/coracao_cheio.png">
+            <img id= "v3" src="imagens/coracao_cheio.png">
         </div>
 
-        <div class="cronometro">Tempo restante: ?</div>
+        <div class="cronometro">Tempo restante: <span id="cronometro"></span></div>
 
     </div>
-
-    <!--<img src="imagens/covid.png" class="covid1">-->
     
     <script>
-        setInterval(function() {
+        document.getElementById('cronometro').innerHTML = tempo
+
+        var criaCovid = setInterval(function() {
             posicaoRandomica()
-        }, 1000)
+        }, criaCovidTempo)
     </script>
 </body>
 </html>

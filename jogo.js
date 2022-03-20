@@ -1,7 +1,23 @@
-/* 1) Definindo as dimensões do palco do jogo */
-
 var altura = 0
 var largura = 0
+var vidas = 1
+var tempo = 15
+
+var criaCovidTempo = 1500
+
+var risco = window.location.search
+risco = risco.replace('?', '')
+
+if(risco === 'moderado') {
+    //1500
+    criaCovidTempo = 1500
+} else if (risco === 'alto') {
+    //1000
+    criaCovidTempo = 1000
+} else if  (risco === 'altissimo') {
+    //750
+    criaCovidTempo = 750
+}
 
 function ajustaTamanhoPalcoJogo() {
     altura = window.innerHeight 
@@ -12,13 +28,35 @@ function ajustaTamanhoPalcoJogo() {
 
 ajustaTamanhoPalcoJogo()
 
-/* 2) Criando posições randômicas */
+var cronometro = setInterval(function() {
+
+    tempo -= 1
+
+    if(tempo < 0) {
+        clearInterval(cronometro)
+        clearInterval(criaCovid)
+        window.location.href = "vitoria.html"
+   
+    } else {
+        document.getElementById('cronometro').innerHTML = tempo
+    }
+
+}, 1000)
 
 function posicaoRandomica () {
 
-    //remover covid anterior caso exista
+    //remover covid anterior (caso exista)
     if (document.getElementById('covid')) {
           document.getElementById('covid').remove()
+          
+          //console.log('v' + vidas)
+          if (vidas > 3) {
+              window.location.href = "fim_de_jogo.html"
+          } else { 
+          document.getElementById('v' + vidas).src="imagens/coracao_vazio.png" // perde vida
+
+          vidas++ // incremento
+        }
     }
 
     var posicaoX = Math.floor(Math.random() * largura) - 90 
@@ -38,12 +76,13 @@ function posicaoRandomica () {
     covid.style.top = posicaoY + 'px'
     covid.style.position = 'absolute'
     covid.id = 'covid'
+    covid.onclick = function () {
+        this.remove()
+    }
 
     document.body.appendChild(covid)
 
 }
-
-/* 3) Criando tamanhos randômicos */
 
 function tamanhoAleatorio () {
     var classe = Math.floor(Math.random() * 3)
@@ -59,7 +98,3 @@ function tamanhoAleatorio () {
             return 'covid3'
     }
 }
-
-/*4) Criando e removendo imagens de covid a cada ciclo de tempo
-     -> setInterval e remover covid anterior caso exista
-*/
